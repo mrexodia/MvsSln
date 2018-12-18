@@ -309,8 +309,15 @@ namespace net.r_eg.MvsSln.Core
                     LSender.Send(this, $"{pItem.solutionConfig} -> {pItem.projectConfig} does not have reference to project item.", Message.Level.Debug);
                     continue;
                 }
-                Project eProject = GetOrLoadProject(pItem.project, pItem.projectConfig);
-                xprojects.Add(new XProject(Sln, pItem, eProject));
+				try
+				{
+					Project eProject = GetOrLoadProject(pItem.project, pItem.projectConfig);
+					xprojects.Add(new XProject(Sln, pItem, eProject));
+				}
+				catch (Exception x)
+				{
+					Console.WriteLine($"Exception when loading {pItem.project.fullPath}");
+				}
             }
             return xprojects;
         }
