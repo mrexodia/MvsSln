@@ -314,9 +314,9 @@ namespace net.r_eg.MvsSln.Core
 					Project eProject = GetOrLoadProject(pItem.project, pItem.projectConfig);
 					xprojects.Add(new XProject(Sln, pItem, eProject));
 				}
-				catch (Exception x)
-				{
-					Console.WriteLine($"Exception when loading {pItem.project.fullPath}");
+				catch (Exception)
+                {
+                    Console.Error.WriteLine($"Exception when loading {pItem.project.fullPath}");
 				}
             }
             return xprojects;
