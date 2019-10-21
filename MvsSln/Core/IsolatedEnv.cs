@@ -188,7 +188,7 @@ namespace net.r_eg.MvsSln.Core
 
             foreach(var eProject in PrjCollection.LoadedProjects)
             {
-                if(eProject.GetProjectGuid() != pItem.pGuid) {
+                if(eProject.GetProjectGuid().ToUpper() != pItem.pGuid.ToUpper()) {
                     continue;
                 }
 
